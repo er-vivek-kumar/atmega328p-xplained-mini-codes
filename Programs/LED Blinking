@@ -1,0 +1,17 @@
+// Program to blink the inbuilt LED of ATmega328P Xplained mini
+#include <avr/io.h>
+#include <avr/delay.h>
+
+int main(void)
+{
+	DDRB = 0xFF;	// Output
+	PORTB = 0xFF;	// Clear the PORTB
+	
+	while (1)
+	{
+		_delay_ms(1000);
+		PORTB |= (1 << PINB5);		// Set
+		_delay_ms(1000);	
+		PORTB &= ~(1 << PINB5);		// Reset
+	}
+}
